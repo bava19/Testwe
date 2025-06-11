@@ -641,6 +641,9 @@
                         <p class="reviewer-name">- Harshil B</p>
                     </div>
                     <div class="testimonial-item">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1325,6 +1328,7 @@
                         behavior: 'smooth'
                     });
 
+                    // Remove active class from all links and add to the clicked one
                     document.querySelectorAll('nav a').forEach(link => {
                         link.classList.remove('active');
                     });
@@ -1342,7 +1346,9 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - sectionHeight / 2) {
+                // Add an offset (e.g., 50px or header height) to make sure the link becomes active a bit before the section hits the very top
+                const offset = 70; // Adjust this based on your header height
+                if (pageYOffset >= sectionTop - offset) {
                     current = section.getAttribute('id');
                 }
             });
@@ -1362,10 +1368,7 @@
     </script>
 </body>
 </html>
-￼Enter                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"The unique lab is a good choice for people. The staff and doctor are so friendly. The results will be delivered very fast."</p>
+￼Enter                        <p class="review-text">"The unique lab is a good choice for people. The staff and doctor are so friendly. The results will be delivered very fast."</p>
                         <p class="reviewer-name">- Sheeja Niyas</p>
                     </div>
                 </div>
@@ -1388,10 +1391,10 @@
         if (menuToggle && mainNav) {
             menuToggle.addEventListener('click', () => {
                 mainNav.classList.toggle('nav-open');
-      });
+            });
 
             // Close menu when a navigation link is clicked (on mobile)
-            document.querySelectorAll('nav a').forEach(anchor => {
+      document.querySelectorAll('nav a').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
 
@@ -1403,6 +1406,7 @@
                         behavior: 'smooth'
                     });
 
+                    // Remove active class from all links and add to the clicked one
                     document.querySelectorAll('nav a').forEach(link => {
                         link.classList.remove('active');
                     });
@@ -1414,3 +1418,5 @@
         // Highlight active nav link on scroll
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+

@@ -298,7 +298,7 @@
             text-align: left;
         }
 
-        .contact-info { /* Existing contact info block */
+        .contact-info {
             flex: 1;
             min-width: 300px;
             background: var(--white);
@@ -320,9 +320,9 @@
             margin-bottom: 5px;
         }
 
-        /* Testimonials block styling - NEW */
+        /* Testimonials block styling */
         .testimonials-block {
-            flex: 1; /* Occupy same space as contact-info */
+            flex: 1;
             min-width: 300px;
             background: var(--white);
             padding: 30px;
@@ -332,24 +332,24 @@
 
         .testimonials-block h3 {
             margin-bottom: 20px;
-            text-align: center; /* Center heading for testimonials */
+            text-align: center;
         }
 
         .testimonial-item {
             margin-bottom: 25px;
             padding-bottom: 25px;
-            border-bottom: 1px solid var(--background-dark); /* Subtle separator */
-            text-align: left; /* Align text within testimonial */
+            border-bottom: 1px solid var(--background-dark);
+            text-align: left;
         }
 
         .testimonial-item:last-child {
-            border-bottom: none; /* No border for the last one */
+            border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
 
         .testimonial-item .stars {
-            color: gold; /* Star color */
+            color: gold;
             font-size: 1em;
             margin-bottom: 8px;
         }
@@ -365,7 +365,6 @@
             color: var(--primary-color);
             font-size: 0.95em;
         }
-
 
         /* Footer */
         .footer {
@@ -383,8 +382,8 @@
         /* Responsive adjustments for mobile menu */
         @media (max-width: 768px) {
             .header {
-                flex-direction: row; /* Keep logo and hamburger side-by-side */
-                justify-content: space-between; /* Space out logo and toggle */
+                flex-direction: row;
+                justify-content: space-between;
                 align-items: center;
                 padding: 15px 20px;
             }
@@ -394,36 +393,35 @@
             }
 
             .header .nav {
-                /* Changed positioning and display for better mobile menu behavior */
-                position: fixed; /* Use fixed to keep it relative to viewport */
-                top: 70px; /* Adjust based on your header's actual height when sticky */
+                position: fixed;
+                top: 70px;
                 left: 0;
                 width: 100%;
-                height: 0; /* Initially hidden height */
-                background: var(--primary-color); /* Dark background for menu */
+                height: 0;
+                background: var(--primary-color);
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                overflow: hidden; /* Hide content when height is 0 */
-                transition: height 0.3s ease-in-out; /* Animate height */
-                z-index: 998; /* Below header (1000), above content */
+                overflow: hidden;
+                transition: height 0.3s ease-in-out;
+                z-index: 998;
             }
 
             .header .nav.nav-open {
-                height: auto; /* Allow height to expand based on content */
-                max-height: 80vh; /* Prevents menu from taking up whole screen if too many links */
-                overflow-y: auto; /* Allow scrolling if menu content is too long */
+                height: auto;
+                max-height: 80vh;
+                overflow-y: auto;
             }
 
             .header .nav ul {
-                flex-direction: column; /* Stack links vertically */
+                flex-direction: column;
                 width: 100%;
                 text-align: center;
                 padding: 0;
-                margin: 0; /* Ensure no extra margin pushes content */
+                margin: 0;
             }
 
             .header .nav ul li {
                 margin: 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Separator for links */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
 
             .header .nav ul li:last-child {
@@ -431,22 +429,22 @@
             }
 
             .header .nav ul li a {
-                display: block; /* Make entire li clickable */
+                display: block;
                 padding: 15px 20px;
-                color: var(--white); /* White links on dark background */
+                color: var(--white);
                 transition: background-color 0.3s ease;
             }
 
             .header .nav ul li a:hover,
             .header .nav ul li a.active {
-                background-color: var(--secondary-color); /* Highlight active/hovered link */
+                background-color: var(--secondary-color);
                 color: var(--white);
             }
 
             .menu-toggle {
-                display: block; /* Show hamburger icon on mobile */
-                color: var(--primary-color); /* Hamburger icon color */
-                padding-right: 20px; /* Added for consistency */
+                display: block;
+                color: var(--primary-color);
+                padding-right: 20px;
             }
 
             /* General mobile adjustments */
@@ -463,23 +461,21 @@
             }
 
             .about-content, .contact-content {
-                flex-direction: column; /* Already set to column */
+                flex-direction: column;
             }
-            /* --- IMPORTANT FIXES FOR MOBILE VIEW --- */
+
             .contact-info,
             .testimonials-block {
-                flex: none; /* Reset flex-grow/shrink */
-                width: 100%; /* Force full width on mobile */
-                min-width: auto; /* Remove min-width constraint on mobile */
-                margin-bottom: 20px; /* Add space between stacked blocks */
+                flex: none;
+                width: 100%;
+                min-width: auto;
+                margin-bottom: 20px;
             }
 
             .contact-info:last-child,
             .testimonials-block:last-child {
-                margin-bottom: 0; /* No margin below the very last block */
+                margin-bottom: 0;
             }
-            /* --- END IMPORTANT FIXES --- */
-
 
             .service-item, .expertise-point {
                 width: auto;
@@ -487,7 +483,7 @@
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 2em; } /* Smaller font for hero on small phones */
+            h1 { font-size: 2em; }
             h2 { font-size: 1.8em; }
             h3 { font-size: 1.4em; }
 
@@ -502,7 +498,8 @@
     <header class="header container">
         <div class="logo">UNIQUE CLINICAL LABORATORY & X-Ray</div>
         <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i> </div>
+            <i class="fas fa-bars"></i>
+        </div>
         <nav class="nav" id="mainNav">
             <ul>
                 <li><a href="#home" class="active">Home</a></li>
@@ -637,7 +634,6 @@
                         <p class="review-text">"Excellent lab and X-ray services. Clean, fast, and friendly staff. Highly recommend."</p>
                         <p class="reviewer-name">- Harshil B</p>
                     </div>
-                    <div class="testimonial-item">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -938,7 +934,7 @@
             text-align: left;
         }
 
-        .contact-info { /* Existing contact info block */
+        .contact-info {
             flex: 1;
             min-width: 300px;
             background: var(--white);
@@ -960,9 +956,9 @@
             margin-bottom: 5px;
         }
 
-        /* Testimonials block styling - NEW */
+        /* Testimonials block styling */
         .testimonials-block {
-            flex: 1; /* Occupy same space as contact-info */
+            flex: 1;
             min-width: 300px;
             background: var(--white);
             padding: 30px;
@@ -972,24 +968,24 @@
 
         .testimonials-block h3 {
             margin-bottom: 20px;
-            text-align: center; /* Center heading for testimonials */
+            text-align: center;
         }
 
         .testimonial-item {
             margin-bottom: 25px;
             padding-bottom: 25px;
-            border-bottom: 1px solid var(--background-dark); /* Subtle separator */
-            text-align: left; /* Align text within testimonial */
+            border-bottom: 1px solid var(--background-dark);
+            text-align: left;
         }
 
         .testimonial-item:last-child {
-            border-bottom: none; /* No border for the last one */
+            border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
 
         .testimonial-item .stars {
-            color: gold; /* Star color */
+            color: gold;
             font-size: 1em;
             margin-bottom: 8px;
         }
@@ -1005,7 +1001,6 @@
             color: var(--primary-color);
             font-size: 0.95em;
         }
-
 
         /* Footer */
         .footer {
@@ -1023,8 +1018,8 @@
         /* Responsive adjustments for mobile menu */
         @media (max-width: 768px) {
             .header {
-                flex-direction: row; /* Keep logo and hamburger side-by-side */
-                justify-content: space-between; /* Space out logo and toggle */
+                flex-direction: row;
+                justify-content: space-between;
                 align-items: center;
                 padding: 15px 20px;
             }
@@ -1034,36 +1029,35 @@
             }
 
             .header .nav {
-                /* Changed positioning and display for better mobile menu behavior */
-                position: fixed; /* Use fixed to keep it relative to viewport */
-                top: 70px; /* Adjust based on your header's actual height when sticky */
+                position: fixed;
+                top: 70px;
                 left: 0;
                 width: 100%;
-                height: 0; /* Initially hidden height */
-                background: var(--primary-color); /* Dark background for menu */
+                height: 0;
+                background: var(--primary-color);
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                overflow: hidden; /* Hide content when height is 0 */
-                transition: height 0.3s ease-in-out; /* Animate height */
-                z-index: 998; /* Below header (1000), above content */
+                overflow: hidden;
+                transition: height 0.3s ease-in-out;
+                z-index: 998;
             }
 
             .header .nav.nav-open {
-                height: auto; /* Allow height to expand based on content */
-                max-height: 80vh; /* Prevents menu from taking up whole screen if too many links */
-                overflow-y: auto; /* Allow scrolling if menu content is too long */
+                height: auto;
+                max-height: 80vh;
+                overflow-y: auto;
             }
 
             .header .nav ul {
-                flex-direction: column; /* Stack links vertically */
+                flex-direction: column;
                 width: 100%;
                 text-align: center;
                 padding: 0;
-                margin: 0; /* Ensure no extra margin pushes content */
+                margin: 0;
             }
 
             .header .nav ul li {
                 margin: 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Separator for links */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
 
             .header .nav ul li:last-child {
@@ -1071,22 +1065,22 @@
             }
 
             .header .nav ul li a {
-                display: block; /* Make entire li clickable */
+                display: block;
                 padding: 15px 20px;
-                color: var(--white); /* White links on dark background */
+                color: var(--white);
                 transition: background-color 0.3s ease;
             }
 
             .header .nav ul li a:hover,
             .header .nav ul li a.active {
-                background-color: var(--secondary-color); /* Highlight active/hovered link */
+                background-color: var(--secondary-color);
                 color: var(--white);
             }
 
             .menu-toggle {
-                display: block; /* Show hamburger icon on mobile */
-                color: var(--primary-color); /* Hamburger icon color */
-                padding-right: 20px; /* Added for consistency */
+                display: block;
+                color: var(--primary-color);
+                padding-right: 20px;
             }
 
             /* General mobile adjustments */
@@ -1103,23 +1097,21 @@
             }
 
             .about-content, .contact-content {
-                flex-direction: column; /* Already set to column */
+                flex-direction: column;
             }
-            /* --- IMPORTANT FIXES FOR MOBILE VIEW --- */
+
             .contact-info,
             .testimonials-block {
-                flex: none; /* Reset flex-grow/shrink */
-                width: 100%; /* Force full width on mobile */
-                min-width: auto; /* Remove min-width constraint on mobile */
-                margin-bottom: 20px; /* Add space between stacked blocks */
+                flex: none;
+                width: 100%;
+                min-width: auto;
+                margin-bottom: 20px;
             }
 
             .contact-info:last-child,
             .testimonials-block:last-child {
-                margin-bottom: 0; /* No margin below the very last block */
+                margin-bottom: 0;
             }
-            /* --- END IMPORTANT FIXES --- */
-
 
             .service-item, .expertise-point {
                 width: auto;
@@ -1127,7 +1119,7 @@
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 2em; } /* Smaller font for hero on small phones */
+            h1 { font-size: 2em; }
             h2 { font-size: 1.8em; }
             h3 { font-size: 1.4em; }
 
@@ -1142,7 +1134,8 @@
     <header class="header container">
         <div class="logo">UNIQUE CLINICAL LABORATORY & X-Ray</div>
         <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i> </div>
+            <i class="fas fa-bars"></i>
+        </div>
         <nav class="nav" id="mainNav">
             <ul>
                 <li><a href="#home" class="active">Home</a></li>
@@ -1291,7 +1284,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 UNIQUE CLINICAL LABORATORY & X-Ray. All rights reserved.</p>
+            <p>© 2025 UNIQUE CLINICAL LABORATORY & X-Ray. All rights reserved.</p>
             <p>Designed with care by [Your Name/Company Name]</p>
         </div>
     </footer>
@@ -1355,8 +1348,8 @@
         });
     </script>
 </body>
-</html>
-￼Enter                        <div class="stars">
+</html>￼Enter                    <div class="testimonial-item">
+                        <div class="stars">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                         <p class="review-text">"The unique lab is a good choice for people. The staff and doctor are so friendly. The results will be delivered very fast."</p>
@@ -1369,7 +1362,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 UNIQUE CLINICAL LABORATORY & X-Ray. All rights reserved.</p>
+            <p>© 2025 UNIQUE CLINICAL LABORATORY & X-Ray. All rights reserved.</p>
             <p>Designed with care by [Your Name/Company Name]</p>
         </div>
     </footer>
@@ -1381,8 +1374,8 @@
 
         if (menuToggle && mainNav) {
             menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('nav-open');
-      });
+          mainNav.classList.toggle('nav-open');
+            });
 
             // Close menu when a navigation link is clicked (on mobile)
             document.querySelectorAll('nav a').forEach(anchor => {
@@ -1407,4 +1400,3 @@
 
         // Highlight active nav link on scroll
         window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');

@@ -1,10 +1,9 @@
-Booking.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unique Lab Kattayikonam - Book Your Diagnostic Test</title>
+    <title>UNIQUE CLINICAL LABORATORY & X-Ray - Your Health, Our Priority</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -68,14 +67,14 @@ Booking.html
             font-size: 1.8em;
             font-weight: 700;
             color: var(--primary-color);
-            padding-left: 20px;
+            padding-left: 20px; /* Adjust for container padding */
         }
 
         .header .nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
-            display: flex;
+            display: flex; /* Default for desktop */
         }
 
         .header .nav ul li {
@@ -95,11 +94,50 @@ Booking.html
 
         /* Hamburger Menu Icon */
         .menu-toggle {
-            display: none;
+            display: none; /* Hidden by default on desktop */
             font-size: 1.8em;
             color: var(--primary-color);
             cursor: pointer;
             padding-right: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, rgba(0, 86, 179, 0.8), rgba(0, 123, 255, 0.8)), url('https://via.placeholder.com/1600x600/0056b3/ffffff?text=UNIQUE+CLINICAL+LAB+X-Ray') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+
+        .hero .btn {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background-color: #0056b3; /* Slightly darker secondary */
         }
 
         /* Section Styling */
@@ -127,79 +165,205 @@ Booking.html
             margin: 10px auto 0;
         }
 
-        /* Form Container */
-        .form-container {
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-item {
             background: var(--white);
-            padding: 40px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            max-width: 600px;
-            margin: 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: left;
         }
 
-        .form-container label {
-            font-family: 'Montserrat', sans-serif;
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .service-item h3 {
             color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
+            margin-bottom: 15px;
+            font-size: 1.6em;
         }
 
-        .form-container input,
-        .form-container select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            font-size: 1em;
-            margin-bottom: 20px;
-            outline: none;
-            font-family: 'Open Sans', sans-serif;
+        .service-item p {
+            color: var(--light-text-color);
         }
 
-        .form-container input:focus,
-        .form-container select:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+        /* About Us Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
         }
 
-        .form-container .btn-primary {
-            background-color: var(--secondary-color);
+        .about-content .text-block {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .about-content .image-block {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .about-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Expertise Section */
+        .expertise-points {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .expertise-point {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            width: 300px;
+            text-align: center;
+        }
+
+        .expertise-point h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .expertise-point p {
+            color: var(--light-text-color);
+        }
+
+        /* Call to Action (CTA) Section */
+        .cta {
+            background: var(--primary-color);
             color: var(--white);
-            padding: 15px;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .cta h2::after {
+            background-color: var(--white);
+        }
+
+        .cta p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .cta .btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border: none; /* Added for consistency */
             border-radius: 5px;
             font-size: 1.1em;
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            border: none;
-            width: 100%;
-            font-family: 'Montserrat', sans-serif;
         }
 
-        .form-container .btn-primary:hover {
-            background-color: var(--primary-color);
+        .cta .btn:hover {
+            background-color: var(--background-dark);
         }
 
-        /* Alert Messages */
-        .alert {
-            padding: 15px;
-            border-radius: 5px;
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-info h3 {
             margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Testimonials block styling */
+        .testimonials-block {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonials-block h3 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .testimonial-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--background-dark);
+            text-align: left;
+        }
+
+        .testimonial-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .testimonial-item .stars {
+            color: gold;
+            font-size: 1em;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-item .review-text {
+            font-style: italic;
+            color: var(--light-text-color);
+            margin-bottom: 10px;
+        }
+
+        .testimonial-item .reviewer-name {
+            font-weight: 600;
+            color: var(--primary-color);
             font-size: 0.95em;
-        }
-
-        .alert-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
         }
 
         /* Footer */
@@ -221,7 +385,7 @@ Booking.html
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
-                padding: 15px 20px;
+                padding: 15px;
             }
 
             .header .logo {
@@ -283,12 +447,38 @@ Booking.html
                 padding-right: 20px;
             }
 
+            /* General mobile adjustments */
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
             .section {
                 padding: 60px 0;
             }
 
-            .form-container {
-                padding: 20px;
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+
+            .contact-info,
+            .testimonials-block {
+                flex: none;
+                width: 100%;
+                min-width: auto;
+                margin-bottom: 20px;
+            }
+
+            .contact-info:last-child,
+            .testimonials-block:last-child {
+                margin-bottom: 0;
+            }
+
+            .service-item, .expertise-point {
+                width: auto;
             }
         }
 
@@ -297,8 +487,8 @@ Booking.html
             h2 { font-size: 1.8em; }
             h3 { font-size: 1.4em; }
 
-            .form-container {
-                padding: 15px;
+            .hero {
+                padding: 80px 15px;
             }
         }
     </style>
@@ -311,75 +501,145 @@ Booking.html
         </div>
         <nav class="nav" id="mainNav">
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#about">About Us</a></li>
-                <li><a href="index.html#expertise">Why Unique</a></li>
-                <li><a href="index.html#contact">Contact & Reviews</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#expertise">Why Unique</a></li>
+                <li><a href="#contact">Contact & Reviews</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="booking" class="section">
+    <section id="home" class="hero">
+        <h1>UNIQUE CLINICAL LABORATORY & X-Ray: Your Health, Our Priority</h1>
+        <p>Precision diagnosis for accurate insights and better health outcomes.</p>
+        <a href="\book" class="btn">Book an Appointment</a>
+    </section>
+
+    <section id="services" class="section">
         <div class="container">
-            <h2>Book Your Diagnostic Test</h2>
-            <div class="form-container">
-                <form method="POST">
-                    <!-- Service Selection -->
-                    <div class="mb-3">
-                        <label for="service" class="form-label">Select Service</label>
-                        <select id="service" name="service" class="form-select">
-                            <option value="">Choose a service</option>
-                            <option value="X-ray">X-ray</option>
-                            <option value="HB Count Test">HB Count Test</option>
-                            <option value="MRI">MRI</option>
-                            <option value="Blood Sugar Test">Blood Sugar Test</option>
-                            <option value="ECG">ECG</option>
-                        </select>
+            <h2>Our Comprehensive Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>Clinical Pathology</h3>
+                    <p>Complete blood count, urine analysis, blood sugar tests, liver and kidney function tests, thyroid function tests, lipid profile, and other routine tests.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Microbiology & Infectious Diseases</h3>
+                    <p>Tests for identifying bacterial, viral, and fungal infections, including culture and sensitivity testing.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Radiology & Advanced Imaging</h3>
+                    <p>Comprehensive X-ray, Ultrasound Scan, and Doppler Studies for detailed internal body imaging.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Cardiology Diagnostics</h3>
+                    <p>Specialized tests like ECG, Echocardiography, and Treadmill Test (TMT) for cardiac health assessment.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Comprehensive Health Packages</h3>
+                    <p>Customized health check-up packages for comprehensive health assessment, tailored to different age groups and needs.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Home Sample Collection</h3>
+                    <p>Convenient home collection service for all types of laboratory tests, ensuring comfort and safety.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About UNIQUE CLINICAL LABORATORY & X-Ray</h2>
+            <div class="about-content">
+                <div class="text-block">
+                    <p>UNIQUE CLINICAL LABORATORY & X-Ray is a leading diagnostic center dedicated to providing high-quality, accurate, and reliable diagnostic services. With state-of-the-art technology and a team of highly qualified and experienced professionals, we are committed to delivering precise results that aid in effective patient care.</p>
+                    <p>Our mission is to offer comprehensive diagnostic solutions under one roof, ensuring convenience, affordability, and timely reporting. We uphold stringent quality control measures and maintain ethical standards to ensure patient trust and satisfaction.</p>
+                    <p>We strive to be your preferred partner in health, providing a seamless diagnostic experience with a focus on patient well-being.</p>
+                </div>
+                <div class="image-block">
+                    <img src="https://via.placeholder.com/400x300/007bff/FFFFFF?text=Unique+Lab+Team+at+Work" alt="Unique Clinical Laboratory & X-Ray Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="section">
+        <div class="container">
+            <h2>Why Choose UNIQUE CLINICAL LABORATORY & X-Ray?</h2>
+            <div class="expertise-points">
+                <div class="expertise-point">
+                    <h3>Accuracy & Reliability</h3>
+                    <p>Advanced testing methodologies and strict quality assurance protocols for precise and dependable results.</p>
+                </div>
+                <div class="expertise-point">
+                    <h3>Experienced Team</h3>
+                    <p>A dedicated team of highly skilled pathologists, radiologists, cardiologists, and technicians ensuring expert care.</p>
+                </div>
+                <div class="expertise-point">
+                    <h3>State-of-the-Art Technology</h3>
+                    <p>Equipped with the latest diagnostic instruments and modern infrastructure for superior analysis.</p>
+                </div>
+                <div class="expertise-point">
+                    <h3>Comprehensive Services</h3>
+                    <p>A wide range of diagnostic tests and imaging services available under one roof for your convenience.</p>
+                </div>
+                <div class="expertise-point">
+                    <h3>Patient Convenience</h3>
+                    <p>Easy appointment scheduling, efficient processes, and home sample collection for a seamless experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Experience Accurate Diagnostics with UNIQUE CLINICAL LABORATORY & X-Ray.</h2>
+            <p>Connect with us today for reliable health insights and personalized care.</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact & Patient Reviews</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Our Location & Details</h3>
+                    <p><strong>UNIQUE CLINICAL LABORATORY & X-Ray</strong></p>
+                    <p>Near Private Bus Stand, Edappally Toll,</p>
+                    <p>Edappally, Kochi - 24</p>
+                    <p>Kerala, India</p>
+                    <p><a href="tel:+919747575757">Phone: +91 97475 75757</a></p>
+                    <p><a href="mailto:adithidiagnostics@gmail.com">Email: adithidiagnostics@gmail.com</a></p>
+                    <p><strong>Business Hours:</strong></p>
+                    <p>Monday - Saturday: 7:00 AM - 7:00 PM</p>
+                    <p>Sunday: 8:00 AM - 1:00 PM</p>
+                </div>
+                <div class="testimonials-block">
+                    <h3>What Our Patients Say</h3>
+                    <div class="testimonial-item">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Good experience with them... Well equipped lab. Friendly staff and fast service... Reasonable price also... Recommended to all."</p>
+                        <p class="reviewer-name">- Muhammed Musthafa K</p>
                     </div>
-
-                    <!-- Date Input -->
-                    <div class="mb-3">
-                        <label for="date" class="form-label">Select Date</label>
-                        <input type="date" id="date" name="date" class="form-control" min="2025-06-11">
+                    <div class="testimonial-item">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Excellent lab and X-ray services. Clean, fast, and friendly staff. Highly recommend."</p>
+                        <p class="reviewer-name">- Harshil B</p>
                     </div>
-
-                    <!-- Time Slot Selection -->
-                    <div class="mb-3">
-                        <label for="time" class="form-label">Select Time</label>
-                        <select id="time" name="time" class="form-select">
-                            <option value="">Choose a time slot</option>
-                            <option value="09:00 AM">09:00 AM</option>
-                            <option value="10:00 AM">10:00 AM</option>
-                            <option value="11:00 AM">11:00 AM</option>
-                            <option value="02:00 PM">02:00 PM</option>
-                            <option value="03:00 PM">03:00 PM</option>
-                        </select>
+                    <div class="testimonial-item">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The unique lab is a good choice for people. The staff and doctor are so friendly. The results will be delivered very fast."</p>
+                        <p class="reviewer-name">- Sheeja Niyas</p>
                     </div>
-
-                    <!-- Name Input -->
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name">
-                    </div>
-
-                    <!-- Phone Input -->
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="e.g., +919876543210">
-                    </div>
-
-                    <!-- Error and Success Messages -->
-                    {% if error %}
-                        <div class="alert alert-error">{{ error }}</div>
-                    {% endif %}
-                    {% if success %}
-                        <div class="alert alert-success">{{ success }}</div>
-                    {% endif %}
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn-primary">Submit</button>
-                </form>
+                </div>
             </div>
         </div>
     </section>
@@ -404,16 +664,49 @@ Booking.html
             // Close menu when a navigation link is clicked (on mobile)
             document.querySelectorAll('nav a').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
                     if (mainNav.classList.contains('nav-open')) {
                         mainNav.classList.remove('nav-open');
                     }
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
                 });
             });
         }
 
+        // Highlight active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 2) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
         // Set initial active state for Home on page load
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('nav a[href="booking.html"]').classList.add('active');
+            document.querySelector('nav a[href="#home"]').classList.add('active');
         });
     </script>
 </body>

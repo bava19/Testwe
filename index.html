@@ -1,722 +1,826 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIQUE CLINICAL LABORATORY & X-Ray - Your Health, Our Priority</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #0056b3; /* Darker blue */
-            --secondary-color: #007bff; /* Bright blue */
-            --text-color: #333;
-            --light-text-color: #666;
-            --background-light: #f8f9fa;
-            --background-dark: #e9ecef;
-            --white: #fff;
-            --border-color: #dee2e6;
-        }
-
-        
-        html {
-            box-sizing: border-box;
-        }
-        *, *::before, *::after {
-            box-sizing: inherit;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-            overflow-x: hidden; 
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--secondary-color);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 0.5em;
-        }
-
-        h1 { font-size: 3em; font-weight: 700; }
-        h2 { font-size: 2.2em; font-weight: 600; }
-        h3 { font-size: 1.8em; font-weight: 600; }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header & Navigation */
-        .header {
-            background: var(--white);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8em;
-            font-weight: 700;
-            color: var(--primary-color);
-            padding-left: 20px; /* Adjust for container padding */
-        }
-
-        .header .nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex; /* Default for desktop */
-        }
-
-        .header .nav ul li {
-            margin-left: 30px;
-        }
-
-        .header .nav ul li a {
-            color: var(--primary-color);
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .header .nav ul li a:hover,
-        .header .nav ul li a.active {
-            color: var(--secondary-color);
-        }
-
-        /* Hamburger Menu Icon */
-        .menu-toggle {
-            display: none; /* Hidden by default on desktop */
-            font-size: 1.8em;
-            color: var(--primary-color);
-            cursor: pointer;
-            padding-right: 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(to right, rgba(0, 86, 179, 0.8), rgba(0, 123, 255, 0.8)), url('https://via.placeholder.com/1600x600/0056b3/ffffff?text=UNIQUE+CLINICAL+LAB+X-Ray') center/cover no-repeat;
-            color: var(--white);
-            text-align: center;
-            padding: 100px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 500px;
-        }
-
-        .hero h1 {
-            color: var(--white);
-            font-size: 3.5em;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.3em;
-            max-width: 800px;
-            margin-bottom: 40px;
-        }
-
-        .hero .btn {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-size: 1.1em;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-
-        .hero .btn:hover {
-            background-color: #0056b3; /* Slightly darker secondary */
-        }
-
-        /* Section Styling */
-        .section {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .section:nth-of-type(even) {
-            background-color: var(--background-light);
-        }
-
-        .section h2 {
-            margin-bottom: 60px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            margin: 10px auto 0;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .service-item {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: left;
-        }
-
-        .service-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        }
-
-        .service-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 1.6em;
-        }
-
-        .service-item p {
-            color: var(--light-text-color);
-        }
-
-        /* About Us Section */
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 40px;
-            text-align: left;
-        }
-
-        .about-content .text-block {
-            flex: 2;
-            min-width: 300px;
-        }
-
-        .about-content .image-block {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-        }
-
-        .about-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Expertise Section */
-        .expertise-points {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .expertise-point {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            width: 300px;
-            text-align: center;
-        }
-
-        .expertise-point h3 {
-            font-size: 1.4em;
-            margin-bottom: 10px;
-        }
-
-        .expertise-point p {
-            color: var(--light-text-color);
-        }
-
-        /* Call to Action (CTA) Section */
-        .cta {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .cta h2 {
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-        .cta h2::after {
-            background-color: var(--white);
-        }
-
-        .cta p {
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary-color);
-            padding: 15px 30px;
-            border: none; /* Added for consistency */
-            border-radius: 5px;
-            font-size: 1.1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta .btn:hover {
-            background-color: var(--background-dark);
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            text-align: left;
-        }
-
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-            background: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .contact-info h3 {
-            margin-bottom: 20px;
-        }
-
-        .contact-info p {
-            margin-bottom: 10px;
-        }
-
-        .contact-info a {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        /* Testimonials block styling */
-        .testimonials-block {
-            flex: 1;
-            min-width: 300px;
-            background: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .testimonials-block h3 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .testimonial-item {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid var(--background-dark);
-            text-align: left;
-        }
-
-        .testimonial-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .testimonial-item .stars {
-            color: gold;
-            font-size: 1em;
-            margin-bottom: 8px;
-        }
-
-        .testimonial-item .review-text {
-            font-style: italic;
-            color: var(--light-text-color);
-            margin-bottom: 10px;
-        }
-
-        .testimonial-item .reviewer-name {
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: 0.95em;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 0.9em;
-        }
-
-        .footer p {
-            margin: 0;
-        }
-
-        /* Responsive adjustments for mobile menu */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 15px;
-            }
-
-            .header .logo {
-                padding-left: 0;
-            }
-
-            .header .nav {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                height: 0;
-                background: var(--primary-color);
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                overflow: hidden;
-                transition: height 0.3s ease-in-out;
-                z-index: 998;
-            }
-
-            .header .nav.nav-open {
-                height: auto;
-                max-height: 80vh;
-                overflow-y: auto;
-            }
-
-            .header .nav ul {
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                padding: 0;
-                margin: 0;
-            }
-
-            .header .nav ul li {
-                margin: 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
-
-            .header .nav ul li:last-child {
-                border-bottom: none;
-            }
-
-            .header .nav ul li a {
-                display: block;
-                padding: 15px 20px;
-                color: var(--white);
-                transition: background-color 0.3s ease;
-            }
-
-            .header .nav ul li a:hover,
-            .header .nav ul li a.active {
-                background-color: var(--secondary-color);
-                color: var(--white);
-            }
-
-            .menu-toggle {
-                display: block;
-                color: var(--primary-color);
-                padding-right: 20px;
-            }
-
-            /* General mobile adjustments */
-            .hero h1 {
-                font-size: 2.5em;
-            }
-
-            .hero p {
-                font-size: 1em;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-
-            .about-content, .contact-content {
-                flex-direction: column;
-            }
-
-            .contact-info,
-            .testimonials-block {
-                flex: none;
-                width: 100%;
-                min-width: auto;
-                margin-bottom: 20px;
-            }
-
-            .contact-info:last-child,
-            .testimonials-block:last-child {
-                margin-bottom: 0;
-            }
-
-            .service-item, .expertise-point {
-                width: auto;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 2em; }
-            h2 { font-size: 1.8em; }
-            h3 { font-size: 1.4em; }
-
-            .hero {
-                padding: 80px 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Unique Clinical Laboratory &amp; X-Ray</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Unique Clinical Laboratory & X-Ray: Advanced diagnostics, lab tests, and X-ray services. Quality care, modern facility, and responsive service.">
+  <meta name="keywords" content="clinical laboratory, X-ray, diagnostics, medical testing, blood tests, healthcare, Unique Clinical Laboratory">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      color: #18335c;
+      background: #f6fbff;
+      overflow-x: hidden;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #2a6ade 70%, #4ab8eb 100%);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(30,60,120,0.1);
+      z-index: 1000;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+    .logo {
+      font-size: 1.35rem;
+      letter-spacing: 0.08em;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 4px 10px;
+      transition: background 0.12s, color 0.12s;
+      border-radius: 4px;
+    }
+    nav ul li a:focus, nav ul li a:hover {
+      background: rgba(255,255,255,0.14);
+      color: #212e6b;
+      outline: none;
+    }
+    .cta-btn {
+      margin-left: 20px;
+      background: #ffda4c;
+      color: #252b3a;
+      border: none;
+      font-weight: bold;
+      padding: 8px 19px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.15s;
+    }
+    .cta-btn:focus, .cta-btn:hover {
+      background: #ffe98e;
+      color: #094bbc;
+    }
+    /* Hamburger for mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      margin-left: 16px;
+      height: 32px;
+      justify-content: center;
+    }
+    .hamburger span {
+      height: 4px;
+      width: 25px;
+      background: #fff;
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    /* Mobile menu */
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #236cd6 75%, #4ab8eb 100%);
+      box-shadow: 0 4px 20px rgba(8,36,79,0.06);
+      z-index: 1002;
+    }
+    .mobile-nav ul {
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-nav li {
+      padding: 14px 32px;
+      border-bottom: 1px solid #2a6ace55;
+    }
+    .show-mobile {
+      display: block !important;
+      animation: fadeIn 0.28s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
+    /* Hero Section */
+    .hero {
+      margin-top: 64px;
+      background: linear-gradient(120deg, #e3efff 70%, #d1e8ff 100%);
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      text-align: center;
+    }
+    .hero-content {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    .hero.loaded .hero-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #1b3775;
+      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #237bb6;
+      margin-bottom: 38px;
+      letter-spacing: 0.01em;
+    }
+    .hero svg {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 14px;
+      fill: #4ab8eb;
+    }
+    /* Section Styles */
+    section {
+      padding: 68px 16px 40px 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 2.1rem;
+      color: #1351a2;
+      margin-bottom: 14px;
+      letter-spacing: 0.015em;
+      font-weight: 700;
+    }
+    /* About */
+    .about-box {
+      background: #eef7ff;
+      border-radius: 16px;
+      padding: 26px 30px 18px 30px;
+      box-shadow: 0 2px 16px rgba(60,110,200,0.07);
+      font-size: 1.13rem;
+      margin-bottom: 0;
+      display: grid;
+      gap: 20px;
+      align-items: start;
+    }
+    .about-info {
+      margin-top: 12px;
+      color: #275689;
+    }
+    .about-details {
+      font-size: 1.02rem;
+      margin-top: 24px;
+      color: #314d6b;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .about-details div {
+      margin-bottom: 10px;
+    }
+    /* Services */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-top: 22px;
+    }
+    .service-card {
+      background: #ffffff;
+      border-radius: 13px;
+      box-shadow: 0 2px 10px rgba(40,120,200,0.07);
+      padding: 26px 19px;
+      text-align: center;
+      transition: transform 0.23s cubic-bezier(.19,1,.22,1), box-shadow 0.17s;
+      cursor: pointer;
+      will-change: transform;
+    }
+    .service-card:hover, .service-card:focus-visible {
+      transform: scale(1.055) translateY(-5px);
+      box-shadow: 0 10px 28px rgba(70,130,200,0.16);
+      outline: 2px solid #3da2f5;
+    }
+    .service-card svg {
+      display: block;
+      margin: 0 auto 12px;
+      width: 38px;
+      height: 38px;
+      fill: #3588bc;
+    }
+    .service-title {
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #175aa7;
+    }
+    .service-desc {
+      color: #29547c;
+      font-size: 0.97rem;
+      margin-bottom: 0;
+    }
+    /* Gallery */
+    .gallery {
+      display: flex;
+      gap: 26px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      justify-content: center;
+    }
+    .gallery-item {
+      background: linear-gradient(120deg, #d1e8ff, #e8f4fa 85%);
+      width: 162px;
+      height: 108px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #406a94;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(100,145,230,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .gallery-item:focus, .gallery-item:hover {
+      outline: 2px solid #3588bc;
+      box-shadow: 0 4px 16px rgba(100,145,230,0.14);
+      transform: scale(1.03);
+    }
+    /* Testimonials slider */
+    .testimonials {
+      margin: 55px 0 12px 0;
+      background: #f2faff;
+      border-radius: 10px;
+      padding: 28px 16px 12px 16px;
+      box-shadow: 0 2px 10px rgba(74,184,235,0.06);
+      position: relative;
+      overflow: hidden;
+      max-width: 660px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .testimonial {
+      opacity: 0;
+      position: absolute;
+      left: 0; top: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s;
+      min-height: 100px;
+    }
+    .testimonial.active {
+      position: relative;
+      opacity: 1;
+      transition: opacity 0.42s;
+    }
+    .testimonial-quote {
+      font-style: italic;
+      color: #1776a6;
+      font-size: 1.09rem;
+      margin-bottom: 13px;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .testimonial-author {
+      font-weight: 500;
+      color: #596378;
+      font-size: 0.97rem;
+    }
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .testimonial-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #b0d0e9;
+      cursor: pointer;
+      border: none;
+      transition: background 0.18s;
+      display: inline-block;
+    }
+    .testimonial-dot.active {
+      background: #268dce;
+    }
+    /* Contact */
+    .contact-container {
+      display: flex;
+      flex-direction: row;
+      gap: 42px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      margin-top: 24px;
+    }
+    .contact-form-area, .contact-details-area {
+      min-width: 270px;
+      flex: 1 1 320px;
+    }
+    .contact-form {
+      background: #eaf3ff;
+      border-radius: 12px;
+      padding: 22px 18px 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      box-shadow: 0 2px 12px rgba(70,130,200,0.07);
+    }
+    .contact-form label {
+      font-weight: 500;
+      margin-bottom: 3px;
+      color: #255589;
+    }
+    .contact-form input, .contact-form textarea {
+      border: 1px solid #b3d0f7;
+      border-radius: 7px;
+      padding: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 6px;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: #38a1f1;
+      outline: 2px solid #38a1f122;
+    }
+    .contact-form button {
+      background: #238bdd;
+      color: #fff;
+      font-weight: bold;
+      padding: 10px 32px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.03rem;
+      align-self: flex-start;
+      margin-top: 2px;
+      transition: background 0.17s;
+    }
+    .contact-form button:focus, .contact-form button:hover {
+      background: #1970b8;
+      color: #ffda4c;
+    }
+    .form-error {
+      color: #c02c3a;
+      font-size: 0.96rem;
+      margin-bottom: 7px;
+      min-height: 18px;
+    }
+    .form-success {
+      color: #1c8d47;
+      font-size: 1rem;
+      margin-bottom: 7px;
+      font-weight: 600;
+      min-height: 20px;
+    }
+    .contact-details-area {
+      background: #f7fbff;
+      border-radius: 14px;
+      padding: 18px 14px 14px 18px;
+      box-shadow: 0 1px 7px rgba(70,130,200,0.05);
+      font-size: 1rem;
+      color: #305488;
+    }
+    .contact-details-area strong {
+      color: #13438b;
+    }
+    .static-map {
+      margin-top: 13px;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(90deg,#c5e7fa 65%,#adceea 100%);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3977bc;
+      font-size: 1.09rem;
+      font-style: italic;
+      letter-spacing: 0.01em;
+      border: 1px solid #a3c4e9;
+    }
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg,#2067b6 65%,#3b9ed6 100%);
+      color: #fff;
+      padding: 28px 16px 17px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1rem;
+    }
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 38px;
+      margin-bottom: 12px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 980px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer-social a {
+      color: #fff;
+      font-size: 1.3rem;
+      margin: 0 3px;
+      opacity: 0.8;
+      transition: opacity 0.17s;
+      padding: 2px;
+    }
+    .footer-social a:focus, .footer-social a:hover {
+      opacity: 1;
+      color: #ffd34e;
+      outline: none;
+    }
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      opacity: 0.83;
+      transition: opacity 0.13s;
+      font-size: 0.95rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .footer-links a:focus, .footer-links a:hover {
+      background: #18335c;
+      opacity: 1;
+    }
+    .footer-copy {
+      opacity: 0.82;
+      margin-top: 5px;
+      font-size: 0.97rem;
+      text-align: center;
+    }
+    /* Scroll reveal animations */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.74s cubic-bezier(.19,1,.22,1), transform 0.7s cubic-bezier(.19,1,.22,1);
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* RESPONSIVENESS */
+    @media (max-width:980px) {
+      section {
+        max-width: 98vw;
+      }
+      .gallery-item { width: 130px; height: 93px;}
+      .about-box { 
+        padding: 18px 10px 12px 12px; 
+        font-size: 1rem;
+      }
+      .footer-row {gap: 15px;}
+    }
+    @media (max-width:700px) {
+      .contact-container {
+        flex-direction: column;
+        gap: 25px;
+      }
+      header {
+        padding: 0 8px;
+      }
+      section { padding: 50px 5vw 32px 5vw;}
+    }
+    @media (max-width:600px) {
+      .footer-row {flex-direction: column;}
+      .about-details { gap: 12px;}
+      .logo { font-size: 1.1rem;}
+    }
+    @media (max-width:580px) {
+      nav ul { display: none;}
+      .hamburger { display: flex;}
+      .gallery { gap: 13px;}
+      .gallery-item {width: 95px; height: 62px;}
+      h2 { font-size: 1.45rem;}
+      .about-box { font-size: 0.97rem;}
+      .services { gap: 16px;}
+      .testimonial-quote { font-size: 1rem;}
+      .testimonials { padding: 16px 3vw;}
+      .about-details { font-size: 0.96rem;}
+      .contact-details-area { font-size: 0.96rem;}
+    }
+  </style>
 </head>
 <body>
-    <header class="header container">
-        <div class="logo">UNIQUE CLINICAL LABORATORY & X-Ray</div>
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
-        </div>
-        <nav class="nav" id="mainNav">
-            <ul>
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#expertise">Why Unique</a></li>
-                <li><a href="#contact">Contact & Reviews</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="home" class="hero">
-        <h1>UNIQUE CLINICAL LABORATORY & X-Ray: Your Health, Our Priority</h1>
-        <p>Precision diagnosis for accurate insights and better health outcomes.</p>
-        <a href="\book" class="btn">Book an Appointment</a>
+  <header role="banner" aria-label="Main navigation">
+    <div class="logo" tabindex="0" aria-label="Unique Clinical Laboratory and X-Ray Home">
+      <span aria-hidden="true">
+        <!-- SVG: Lab flask icon -->
+        <svg viewBox="0 0 30 28" width="28" height="28"><g><path d="M12 2a2 2 0 1 1 4 0v7.59l6.7 10.3A7 7 0 0 1 16.51 28h-3.02A7 7 0 0 1 7.3 19.89l6.7-10.3V2zm2 12a1 1 0 0 0-.83.45l-6.74 10.39A5.001 5.001 0 0 0 13.49 26h3.02a5.001 5.001 0 0 0 7.06-3.16l-6.74-10.39A1 1 0 0 0 14 14z"/></g></svg>
+      </span>
+      Unique Clinical Laboratory & X-Ray
+    </div>
+    <nav aria-label="Section navigation">
+      <ul>
+        <li><a href="#home" tabindex="0">Home</a></li>
+        <li><a href="#about" tabindex="0">About Us</a></li>
+        <li><a href="#services" tabindex="0">Services</a></li>
+        <li><a href="#gallery" tabindex="0">Gallery</a></li>
+        <li><a href="#contact" tabindex="0">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="cta-btn" onclick="scrollToSection('contact')" aria-label="Book Appointment">Book Appointment</button>
+    <div class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobileMenu" tabindex="0" role="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="mobile-nav" id="mobileMenu" aria-label="Mobile section navigation">
+      <ul>
+        <li><a href="#home" tabindex="0" onclick="closeMobileNav()">Home</a></li>
+        <li><a href="#about" tabindex="0" onclick="closeMobileNav()">About Us</a></li>
+        <li><a href="#services" tabindex="0" onclick="closeMobileNav()">Services</a></li>
+        <li><a href="#gallery" tabindex="0" onclick="closeMobileNav()">Gallery</a></li>
+        <li><a href="#contact" tabindex="0" onclick="closeMobileNav()">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="hero" id="home" aria-label="Welcome section">
+      <div class="hero-content">
+        <svg viewBox="0 0 60 60" aria-hidden="true">
+          <circle cx="30" cy="30" r="26" fill="#e8f4fa" />
+          <path d="M30 14 a8 8 0 0 1 8 8 v13 a8 8 0 0 1 -16 0 V22 a8 8 0 0 1 8-8 z" fill="#7ad0ff"/>
+          <rect x="27" y="38" width="6" height="10" rx="3" fill="#308ad3"/>
+        </svg>
+        <h1>Unique Clinical Laboratory & X-Ray</h1>
+        <p>Advanced Diagnostics for Better Health</p>
+      </div>
     </section>
 
-    <section id="services" class="section">
-        <div class="container">
-            <h2>Our Comprehensive Services</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <h3>Clinical Pathology</h3>
-                    <p>Complete blood count, urine analysis, blood sugar tests, liver and kidney function tests, thyroid function tests, lipid profile, and other routine tests.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Microbiology & Infectious Diseases</h3>
-                    <p>Tests for identifying bacterial, viral, and fungal infections, including culture and sensitivity testing.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Radiology & Advanced Imaging</h3>
-                    <p>Comprehensive X-ray, Ultrasound Scan, and Doppler Studies for detailed internal body imaging.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Cardiology Diagnostics</h3>
-                    <p>Specialized tests like ECG, Echocardiography, and Treadmill Test (TMT) for cardiac health assessment.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Comprehensive Health Packages</h3>
-                    <p>Customized health check-up packages for comprehensive health assessment, tailored to different age groups and needs.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Home Sample Collection</h3>
-                    <p>Convenient home collection service for all types of laboratory tests, ensuring comfort and safety.</p>
-                </div>
-            </div>
+    <section id="about" class="fade-section" aria-label="About Unique Clinical Laboratory & X-Ray">
+      <h2>About Us</h2>
+      <div class="about-box">
+        <div>
+          <strong>State-of-the-Art Diagnostics. Caring for You.</strong>
+          <div class="about-info">
+            Unique Clinical Laboratory & X-Ray is a modern medical diagnostics center offering a comprehensive range of clinical laboratory tests and X-ray services. We’re committed to precise, fast, and reliable testing to empower patients and physicians with the information they need. Our facility combines advanced technology with a unique focus on patient care and convenience.
+          </div>
         </div>
+        <div class="about-details" aria-label="Lab Details">
+          <div><strong>Location:</strong> Main Rd, near Hotel Shubham, Mehkar, Maharashtra 443301</div>
+          <div><strong>Hours:</strong> Mon-Sat: 8am – 7pm; Sun: 9am – 2pm</div>
+          <div><strong>Contact:</strong> +91 94213 96744</div>
+        </div>
+      </div>
     </section>
 
-    <section id="about" class="section">
-        <div class="container">
-            <h2>About UNIQUE CLINICAL LABORATORY & X-Ray</h2>
-            <div class="about-content">
-                <div class="text-block">
-                    <p>UNIQUE CLINICAL LABORATORY & X-Ray is a leading diagnostic center dedicated to providing high-quality, accurate, and reliable diagnostic services. With state-of-the-art technology and a team of highly qualified and experienced professionals, we are committed to delivering precise results that aid in effective patient care.</p>
-                    <p>Our mission is to offer comprehensive diagnostic solutions under one roof, ensuring convenience, affordability, and timely reporting. We uphold stringent quality control measures and maintain ethical standards to ensure patient trust and satisfaction.</p>
-                    <p>We strive to be your preferred partner in health, providing a seamless diagnostic experience with a focus on patient well-being.</p>
-                </div>
-                <div class="image-block">
-                    <img src="https://via.placeholder.com/400x300/007bff/FFFFFF?text=Unique+Lab+Team+at+Work" alt="Unique Clinical Laboratory & X-Ray Team">
-                </div>
-            </div>
+    <section id="services" class="fade-section" aria-label="Our Diagnostic Services">
+      <h2>Our Services</h2>
+      <div class="services">
+        <div class="service-card" tabindex="0" aria-label="Blood Tests">
+          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#e3f2fd"/><ellipse cx="20" cy="22" rx="10" ry="15" fill="#4ab8eb"/><ellipse cx="20" cy="17" rx="7" ry="7" fill="#e6f7fe"/></svg>
+          <div class="service-title">Blood Tests</div>
+          <div class="service-desc">Full blood panel, CBC, blood sugar, cholesterol, and more.</div>
         </div>
+        <div class="service-card" tabindex="0" aria-label="Urine Analysis">
+          <svg viewBox="0 0 40 40"><rect x="12" y="6" width="16" height="28" rx="7" fill="#4ab8eb"/><rect x="14" y="24" width="12" height="7" rx="3.5" fill="#ffd34e"/></svg>
+          <div class="service-title">Urine Analysis</div>
+          <div class="service-desc">Routine, microscopic, and special urine tests.</div>
+        </div>
+        <div class="service-card" tabindex="0" aria-label="X-Ray Imaging">
+          <svg viewBox="0 0 40 40"><rect x="7" y="9" width="26" height="22" rx="5" fill="#afe3fc"/><rect x="14" y="14" width="12" height="12" rx="4" fill="#4ab8eb"/><line x1="20" y1="20" x2="26" y2="26" stroke="#6fbbf3" stroke-width="2"/></svg>
+          <div class="service-title">X-Ray Imaging</div>
+          <div class="service-desc">Digital X-ray for chest, bone, dental, and more.</div>
+        </div>
+        <div class="service-card" tabindex="0" aria-label="Ultrasound">
+          <svg viewBox="0 0 40 40"><ellipse cx="20" cy="23" rx="15" ry="6" fill="#cde5f8"/><ellipse cx="20" cy="19" rx="10" ry="4" fill="#4ab8eb"/><ellipse cx="20" cy="16" rx="6" ry="2" fill="#89d1fb"/></svg>
+          <div class="service-title">Ultrasound</div>
+          <div class="service-desc">Non-invasive imaging for abdomen, thyroid, pregnancies.</div>
+        </div>
+        <div class="service-card" tabindex="0" aria-label="Hormone Profiles">
+          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#e6f7fe"/><ellipse cx="20" cy="22" rx="10" ry="7" fill="#4ab8eb"/><circle cx="12" cy="17" r="2" fill="#ffd34e"/><circle cx="28" cy="18" r="2" fill="#ffd34e"/></svg>
+          <div class="service-title">Hormone Profiles</div>
+          <div class="service-desc">Thyroid, fertility, and metabolic hormone testing.</div>
+        </div>
+        <div class="service-card" tabindex="0" aria-label="Pathology & Specialized Tests">
+          <svg viewBox="0 0 40 40"><rect x="10" y="10" width="20" height="20" fill="#e3f2fd"/><rect x="13" y="13" width="14" height="14" fill="#84d2ff"/><rect x="19" y="19" width="2" height="2" fill="#ffd34e"/></svg>
+          <div class="service-title">Pathology &amp; Specialized Tests</div>
+          <div class="service-desc">Histopathology, cytology, and advanced diagnostics.</div>
+        </div>
+      </div>
     </section>
 
-    <section id="expertise" class="section">
-        <div class="container">
-            <h2>Why Choose UNIQUE CLINICAL LABORATORY & X-Ray?</h2>
-            <div class="expertise-points">
-                <div class="expertise-point">
-                    <h3>Accuracy & Reliability</h3>
-                    <p>Advanced testing methodologies and strict quality assurance protocols for precise and dependable results.</p>
-                </div>
-                <div class="expertise-point">
-                    <h3>Experienced Team</h3>
-                    <p>A dedicated team of highly skilled pathologists, radiologists, cardiologists, and technicians ensuring expert care.</p>
-                </div>
-                <div class="expertise-point">
-                    <h3>State-of-the-Art Technology</h3>
-                    <p>Equipped with the latest diagnostic instruments and modern infrastructure for superior analysis.</p>
-                </div>
-                <div class="expertise-point">
-                    <h3>Comprehensive Services</h3>
-                    <p>A wide range of diagnostic tests and imaging services available under one roof for your convenience.</p>
-                </div>
-                <div class="expertise-point">
-                    <h3>Patient Convenience</h3>
-                    <p>Easy appointment scheduling, efficient processes, and home sample collection for a seamless experience.</p>
-                </div>
-            </div>
-        </div>
+    <section id="gallery" class="fade-section" aria-label="Gallery Section">
+      <h2>Gallery</h2>
+      <div class="gallery" role="list">
+        <div class="gallery-item" tabindex="0" aria-label="Reception Desk">Reception Desk (placeholder)</div>
+        <div class="gallery-item" tabindex="0" aria-label="Sample Collection Area">Sample Collection Area (placeholder)</div>
+        <div class="gallery-item" tabindex="0" aria-label="X-Ray Room">X-Ray Room (placeholder)</div>
+        <div class="gallery-item" tabindex="0" aria-label="Waiting Area">Waiting Area (placeholder)</div>
+        <div class="gallery-item" tabindex="0" aria-label="Lab Equipment">Lab Equipment (placeholder)</div>
+        <div class="gallery-item" tabindex="0" aria-label="Consultation Cabin">Consultation Cabin (placeholder)</div>
+      </div>
     </section>
 
-    <section class="cta">
-        <div class="container">
-            <h2>Experience Accurate Diagnostics with UNIQUE CLINICAL LABORATORY & X-Ray.</h2>
-            <p>Connect with us today for reliable health insights and personalized care.</p>
-            <a href="#contact" class="btn">Get in Touch</a>
+    <div class="testimonials" aria-label="Testimonials">
+      <h2 style="color:#186bb5;font-size:1.3rem;text-align:center;margin:0 0 16px 0;">What Our Patients Say</h2>
+      <div class="testimonial" id="testimonial-0" aria-live="polite">
+        <div class="testimonial-quote">"Professional and courteous staff. Results delivered faster than expected—very impressed!"</div>
+        <div class="testimonial-author">— Priya K.</div>
+      </div>
+      <div class="testimonial" id="testimonial-1" aria-live="polite">
+        <div class="testimonial-quote">"Modern lab, accurate testing. The X-ray service was quick and painless. Highly recommend."</div>
+        <div class="testimonial-author">— Rajesh S.</div>
+      </div>
+      <div class="testimonial" id="testimonial-2" aria-live="polite">
+        <div class="testimonial-quote">"Clean and well-organized facility. Friendly staff and great diagnostics."</div>
+        <div class="testimonial-author">— Dr. Meena L.</div>
+      </div>
+      <div class="testimonial" id="testimonial-3" aria-live="polite">
+        <div class="testimonial-quote">"Appreciate the clear reports and personal attention. Made my experience worry-free!"</div>
+        <div class="testimonial-author">— Sameer T.</div>
+      </div>
+      <div class="testimonial-dots">
+        <button class="testimonial-dot" aria-label="Show first testimonial" onclick="setTestimonial(0)" tabindex="0"></button>
+        <button class="testimonial-dot" aria-label="Show second testimonial" onclick="setTestimonial(1)" tabindex="0"></button>
+        <button class="testimonial-dot" aria-label="Show third testimonial" onclick="setTestimonial(2)" tabindex="0"></button>
+        <button class="testimonial-dot" aria-label="Show fourth testimonial" onclick="setTestimonial(3)" tabindex="0"></button>
+      </div>
+    </div>
+
+    <section id="contact" class="fade-section" aria-label="Contact & Inquiry">
+      <h2>Contact Us</h2>
+      <div class="contact-container">
+        <div class="contact-form-area">
+          <form class="contact-form" id="contactForm" autocomplete="off" aria-label="Inquiry Form">
+            <div class="form-error" id="formError" aria-live="polite"></div>
+            <div class="form-success" id="formSuccess" aria-live="polite"></div>
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" aria-required="true" aria-label="Your Name">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" autocomplete="email" aria-required="true" aria-label="Email Address">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" aria-required="true" aria-label="Message"></textarea>
+            <button type="submit" aria-label="Send inquiry">Submit</button>
+          </form>
         </div>
+        <div class="contact-details-area">
+          <strong>Address:</strong> Main Road, near Hotel Shubham, Mehkar, Maharashtra 443301<br>
+          <strong>Phone:</strong> <a href="tel:+919421396744" style="color:#238bdd;text-decoration:none;" aria-label="Phone number">+91 94213 96744</a><br>
+          <strong>Email:</strong> <a href="mailto:uniquelabxray@gmail.com" style="color:#238bdd;text-decoration:none;" aria-label="Email">uniquelabxray@gmail.com</a>
+          <div class="static-map" aria-label="Map placeholder">
+            [Map: Near Hotel Shubham, Mehkar]
+          </div>
+        </div>
+      </div>
     </section>
+  </main>
+  <footer aria-label="Footer">
+    <div class="footer-row">
+      <div class="footer-social">
+        <a title="Facebook" aria-label="Facebook page" tabindex="0" href="#" rel="noopener">
+          <!-- Facebook SVG -->
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M17.524 4.936h-2.154c-2.004 0-2.738.97-2.738 2.425v1.532h-1.361c-.219 0-.397.178-.397.397v1.765c0 .219.177.397.397.397h1.361v4.492c0 .218.178.396.397.396h1.81c.22 0 .397-.178.397-.396V11.45h1.623c.195 0 .364-.146.393-.338l.274-1.765a.397.397 0 0 0-.393-.455h-1.897V7.572c0-.404.087-.61.579-.61h1.37c.219 0 .397-.177.397-.396V5.334c0-.219-.178-.398-.397-.398zm-.397 12.095c0 1.11-.898 2.008-2.008 2.008H8.882c-1.109 0-2.007-.898-2.007-2.008V8.334c0-1.109.898-2.008 2.007-2.008h6.237c1.11 0 2.008.899 2.008 2.008v8.697z"/></svg>
+        </a>
+        <a title="Instagram" aria-label="Instagram profile" tabindex="0" href="#" rel="noopener">
+          <!-- Instagram SVG -->
+          <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="4" fill="#fff"/><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="#fff"/><circle cx="18" cy="6" r="1" fill="#fff"/></svg>
+        </a>
+      </div>
+      <div class="footer-links">
+        <a href="#home" tabindex="0">Home</a>
+        <a href="#about" tabindex="0">About</a>
+        <a href="#services" tabindex="0">Services</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy" aria-label="Copyright info">
+      © 2025 Unique Clinical Laboratory & X-Ray. All rights reserved.
+    </div>
+  </footer>
+  <script>
+    // Hamburger Menu
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const navLinks = document.querySelectorAll(".mobile-nav a");
+    hamburger.onclick = () => {
+      mobileMenu.classList.toggle("show-mobile");
+    };
+    hamburger.onkeydown = (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        mobileMenu.classList.toggle("show-mobile");
+        e.preventDefault();
+      }
+    };
+    function closeMobileNav() {
+      mobileMenu.classList.remove("show-mobile");
+    }
+    document.body.addEventListener('click', function(e) {
+      if(mobileMenu.classList.contains('show-mobile') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)){
+        mobileMenu.classList.remove('show-mobile');
+      }
+    });
+    // Scroll with JS for smooth nav
+    function scrollToSection(id){
+      document.getElementById(id).scrollIntoView({behavior:"smooth"});
+      if(window.innerWidth<=600) closeMobileNav();
+    }
 
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact & Patient Reviews</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Our Location & Details</h3>
-                    <p><strong>UNIQUE CLINICAL LABORATORY & X-Ray</strong></p>
-                    <p>Near Private Bus Stand, Edappally Toll,</p>
-                    <p>Edappally, Kochi - 24</p>
-                    <p>Kerala, India</p>
-                    <p><a href="tel:+919747575757">Phone: +91 97475 75757</a></p>
-                    <p><a href="mailto:adithidiagnostics@gmail.com">Email: adithidiagnostics@gmail.com</a></p>
-                    <p><strong>Business Hours:</strong></p>
-                    <p>Monday - Saturday: 7:00 AM - 7:00 PM</p>
-                    <p>Sunday: 8:00 AM - 1:00 PM</p>
-                </div>
-                <div class="testimonials-block">
-                    <h3>What Our Patients Say</h3>
-                    <div class="testimonial-item">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"Good experience with them... Well equipped lab. Friendly staff and fast service... Reasonable price also... Recommended to all."</p>
-                        <p class="reviewer-name">- Muhammed Musthafa K</p>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"Excellent lab and X-ray services. Clean, fast, and friendly staff. Highly recommend."</p>
-                        <p class="reviewer-name">- Harshil B</p>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"The unique lab is a good choice for people. The staff and doctor are so friendly. The results will be delivered very fast."</p>
-                        <p class="reviewer-name">- Sheeja Niyas</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    // Hero Section Animation on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(()=>document.querySelector('.hero').classList.add('loaded'),200);
+    });
 
-    <footer class="footer">
-        <div class="container">
-            <p>© 2025 UNIQUE CLINICAL LABORATORY & X-Ray. All rights reserved.</p>
-            <p>Designed with care by [Your Name/Company Name]</p>
-        </div>
-    </footer>
-
-    <script>
-        // Hamburger menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-
-        if (menuToggle && mainNav) {
-            menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('nav-open');
-            });
-
-            // Close menu when a navigation link is clicked (on mobile)
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    if (mainNav.classList.contains('nav-open')) {
-                        mainNav.classList.remove('nav-open');
-                    }
-
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-
-                    document.querySelectorAll('nav a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                });
-            });
-        }
-
-        // Highlight active nav link on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
-
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - sectionHeight / 2) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
+    // Intersection Observer for section reveals
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) entry.target.classList.add('visible');
         });
+      },
+      { threshold: 0.13 }
+    );
+    document.querySelectorAll('.fade-section').forEach(el=>{
+      observer.observe(el);
+    });
 
-        // Set initial active state for Home on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('nav a[href="#home"]').classList.add('active');
-        });
-    </script>
+    // Testimonials Slider
+    const testimonialEls = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    let testimonialIdx = 0;
+    function setTestimonial(idx){
+      testimonialEls.forEach((el,i)=>el.classList.toggle('active',i===idx));
+      dots.forEach((el,i)=>el.classList.toggle('active',i===idx));
+      testimonialIdx = idx;
+    }
+    function nextTestimonial(){
+      let idx = (testimonialIdx+1)%testimonialEls.length;
+      setTestimonial(idx);
+    }
+    setTestimonial(0);
+    let testimonialTimer = setInterval(nextTestimonial,5500);
+    dots.forEach((dot,i)=>{
+      dot.onclick=()=>{clearInterval(testimonialTimer);setTestimonial(i);testimonialTimer=setInterval(nextTestimonial,5500);}
+      dot.onkeydown=(e)=>{if(e.key==="Enter"||e.key===" "){clearInterval(testimonialTimer);setTestimonial(i);testimonialTimer=setInterval(nextTestimonial,5500);}};
+    });
+
+    // Contact Form Validation
+    const contactForm = document.getElementById('contactForm');
+    const formError = document.getElementById('formError');
+    const formSuccess = document.getElementById('formSuccess');
+    contactForm.onsubmit = function(e){
+      e.preventDefault();
+      formError.textContent = "";
+      formSuccess.textContent = "";
+      let name = contactForm.name.value.trim();
+      let email = contactForm.email.value.trim();
+      let message = contactForm.message.value.trim();
+      // basic email regex
+      let re = /^[^@]+@[^@.]+\.[a-z]{2,}$/i;
+      if(!name) { formError.textContent = "Please enter your name."; contactForm.name.focus(); return;}
+      if(!email) { formError.textContent = "Please enter your email."; contactForm.email.focus(); return;}
+      if(!re.test(email)) {formError.textContent = "Please enter a valid email.";contactForm.email.focus();return;}
+      if(!message) { formError.textContent = "Please enter your message."; contactForm.message.focus(); return;}
+      formSuccess.textContent = "Thank you for contacting us! We'll get back to you soon.";
+      contactForm.reset();
+    };
+
+    // Keyboard accessibility for logo (go to top)
+    document.querySelector(".logo").addEventListener('keydown', function(e){
+      if(e.key === "Enter" || e.key === " "){
+        e.preventDefault(); document.getElementById('home').scrollIntoView({behavior:"smooth"});
+      }
+    });
+  </script>
 </body>
 </html>

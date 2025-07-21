@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unique Clinical Laboratory & X-Ray | Precision Diagnostics</title>
-    <meta name="description" content="Unique Clinical Laboratory & X-Ray offers bespoke, high-quality diagnostic services. Inspired by top-tier medical websites, we provide precision, care, and trust.">
-    <meta name="keywords" content="premium diagnostics, clinical laboratory, X-ray services, modern medical UI, trusted healthcare">
+    <title>Unique Clinical Laboratory & X-Ray | Premium Diagnostic Services</title>
+    <meta name="description" content="A premium, bespoke quality website for Unique Clinical Laboratory & X-Ray, offering state-of-the-art diagnostics with a focus on precision and patient care.">
+    <meta name="keywords" content="clinical laboratory, x-ray, diagnostics, premium healthcare, medical testing, NABL accredited">
     <style>
         :root {
             --dark-blue: #0A192F;
             --light-sky-blue: #E6F4FF;
             --white: #FFFFFF;
-            --accent: #FF6B6B; /* Bright Coral */
-            --font-stack: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --slate: #8892b0;
+            --light-slate: #ccd6f6;
+            --accent: #A8FF3E;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --header-height: 100px;
         }
 
         html {
@@ -21,10 +24,16 @@
 
         body {
             background-color: var(--dark-blue);
-            color: var(--light-sky-blue);
-            font-family: var(--font-stack);
+            color: var(--slate);
+            font-family: var(--font-sans);
             margin: 0;
-            overflow-x: hidden;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body.mobile-nav-open {
+            overflow: hidden;
         }
 
         .container {
@@ -34,73 +43,87 @@
         }
 
         section {
-            padding: 8rem 0;
-            overflow: hidden;
+            padding: 100px 0;
         }
         
-        /* --- Header --- */
-        header {
-            position: fixed;
+        .section-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            font-size: clamp(26px, 5vw, 32px);
+            color: var(--light-slate);
             width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 100;
-            padding: 1.5rem 0;
-            transition: background-color 0.3s, backdrop-filter 0.3s, box-shadow 0.3s;
+            white-space: nowrap;
+        }
+        
+        .section-heading::after {
+            content: '';
+            display: block;
+            position: relative;
+            top: 0px;
+            width: 300px;
+            height: 1px;
+            margin-left: 20px;
+            background-color: #233554;
         }
 
-        header.scrolled {
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 100;
             background-color: rgba(10, 25, 47, 0.85);
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+            transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        header.scrolled-down {
+            transform: translateY(calc(var(--header-height) * -1));
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100%;
         }
 
-        .logo {
-            font-size: 1.5rem;
+        .logo a {
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--white);
+            color: var(--accent);
             text-decoration: none;
         }
         
-        nav ol {
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .desktop-nav ol {
             display: flex;
             align-items: center;
             list-style: none;
             margin: 0;
             padding: 0;
         }
-        
-        nav ol li {
+
+        .desktop-nav ol li {
             margin: 0 1rem;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
-        
-        nav ol li a {
-            color: var(--light-sky-blue);
+
+        .desktop-nav ol li a {
+            color: var(--light-slate);
             text-decoration: none;
-            position: relative;
-            padding: 0.5rem 0;
+            padding: 10px;
+            transition: color 0.3s;
         }
         
-        nav ol li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        nav ol li a:hover::after {
-            width: 100%;
+        .desktop-nav ol li a:hover {
+            color: var(--accent);
         }
 
         .cta-button {
@@ -108,265 +131,248 @@
             color: var(--accent);
             border: 1px solid var(--accent);
             border-radius: 4px;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s;
+            margin-left: 1rem;
         }
 
         .cta-button:hover {
+            background-color: rgba(168, 255, 62, 0.1);
+        }
+        
+        /* Mobile Nav & Hamburger */
+        .mobile-nav-toggle {
+            display: none;
+            z-index: 101;
+        }
+        
+        .hamburger-box {
+            width: 30px;
+            height: 24px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .hamburger-inner {
             background-color: var(--accent);
-            color: var(--dark-blue);
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            border-radius: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            transition: transform .22s cubic-bezier(.55,.055,.675,.19) 0s;
+        }
+        .hamburger-inner::before, .hamburger-inner::after {
+            content: '';
+            display: block;
+            background-color: var(--accent);
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            border-radius: 2px;
+            left: 0;
+            transition: transform .15s ease;
+        }
+        .hamburger-inner::before { top: -10px; }
+        .hamburger-inner::after { bottom: -10px; }
+        
+        .mobile-nav-open .hamburger-inner {
+            transform: rotate(225deg);
+            transition-delay: .12s;
+            transition-timing-function: cubic-bezier(.215,.61,.355,1);
+        }
+        .mobile-nav-open .hamburger-inner::before {
+            top: 0;
+            transform: rotate(90deg);
+            transition: top .1s ease-out,transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+        }
+        .mobile-nav-open .hamburger-inner::after {
+            bottom: 0;
+            transform: rotate(-90deg);
+            opacity: 0;
+            transition: bottom .1s ease-out,opacity .1s ease-out;
         }
 
-        /* --- Hero Section --- */
+        .mobile-nav-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: min(75vw, 400px);
+            height: 100%;
+            background-color: #112240;
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-nav-open .mobile-nav-panel {
+            transform: translateX(0);
+            visibility: visible;
+        }
+        
+        .mobile-nav-panel ol {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        
+        .mobile-nav-panel ol li {
+            margin: 2rem 0;
+        }
+        
+        .mobile-nav-panel ol a {
+            color: var(--light-slate);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 1rem;
+        }
+
+        /* Hero Section */
         #hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
-            padding-top: 0;
-            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.3), rgba(255, 255, 255, 0));
-        }
-        
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 800;
-            color: var(--white);
-            margin: 0;
         }
 
-        .hero-content .headline-word {
+        #hero h1 {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 800;
+            color: var(--light-slate);
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        #hero .headline-word {
             display: inline-block;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInWord 0.5s forwards;
         }
         
-        .hero-content h2 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 800;
-            color: #8892b0;
-            margin: 0;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: #8892b0;
-            max-width: 600px;
+        #hero p {
+            font-size: 1.1rem;
+            color: var(--slate);
+            max-width: 540px;
             margin-top: 1.5rem;
         }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 24px;
-            height: 40px;
-            border: 2px solid var(--light-sky-blue);
-            border-radius: 12px;
-        }
-
-        .scroll-indicator::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 8px;
-            background-color: var(--light-sky-blue);
-            border-radius: 2px;
-            animation: scroll-anim 2s infinite;
-        }
         
-        @keyframes fadeInWord {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes scroll-anim {
-            0% { transform: translate(-50%, 0); opacity: 1; }
-            50% { transform: translate(-50%, 10px); opacity: 0.5; }
-            100% { transform: translate(-50%, 0); opacity: 1; }
-        }
-
-        /* --- Trust Section --- */
-        .trust-badges {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 3rem 0;
-            border-radius: 12px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .badge {
-            text-align: center;
-            flex: 1;
-        }
-        
-        .badge svg {
-            width: 48px;
-            height: 48px;
-            fill: var(--accent);
-            margin-bottom: 1rem;
-        }
-        
-        .badge h3 {
-            font-size: 1.5rem;
-            color: var(--white);
-            margin: 0 0 0.5rem 0;
-        }
-        
-        .badge p {
-            color: #8892b0;
-            margin: 0;
-        }
-
-        /* --- About Section --- */
-        #about .about-container {
+        /* How It Works Section */
+        .process-grid {
             display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: 3rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .process-step {
+            opacity: 0;
+            transform: translateY(20px);
         }
         
-        .about-text h2 {
-            font-size: 2.5rem;
-            color: var(--light-sky-blue);
+        .process-step h3 {
+            color: var(--light-slate);
         }
 
-        .about-text p {
-            color: #8892b0;
-            line-height: 1.6;
+        .process-step .step-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            opacity: 0.3;
         }
+        
+        .process-step svg { width: 50px; height: 50px; fill: var(--accent); margin-bottom: 1rem; }
 
-        .about-image-placeholder {
-            width: 100%;
-            height: 350px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(10, 25, 47, 0.5)),
-                        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            position: relative;
-            transform: translateX(2rem);
-        }
-
-        /* --- Services Section --- */
-        .section-heading {
-            text-align: center;
-            margin-bottom: 4rem;
-            font-size: 2.5rem;
-            color: var(--light-sky-blue);
-        }
-
+        /* Services Section */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
         }
 
         .service-card {
-            background-color: rgba(255, 255, 255, 0.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
             padding: 2rem;
-            border-radius: 12px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            transition: transform 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s;
-        }
-        
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7);
         }
         
-        .service-card svg {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 1.5rem;
-            fill: var(--accent);
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            color: var(--white);
-            margin: 0 0 1rem 0;
-        }
+        .service-card h3 { color: var(--light-slate); }
+        .service-card .icon-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .service-card .icon-container svg { width: 40px; height: 40px; }
 
-        .service-card p {
-            color: #8892b0;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
+        /* FAQ Section */
+        .faq-accordion .faq-item {
+            border-bottom: 1px solid #233554;
         }
-        
-        .service-card a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* --- Contact Section --- */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: flex-start;
-        }
-
-        .contact-info p {
-            color: #8892b0;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-        }
-        
-        .info-item {
+        .faq-question {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            padding: 1.5rem 0;
+            cursor: pointer;
+            color: var(--light-slate);
+            font-size: 1.1rem;
         }
-        
-        .info-item svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--accent);
-            margin-right: 1rem;
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
         }
 
-        .info-item a {
-            color: var(--light-sky-blue);
-            text-decoration: none;
-        }
-
+        /* Contact Section */
         .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form h2 {
+            font-size: clamp(30px, 5vw, 50px);
+            color: var(--light-slate);
+        }
+
+        .contact-form form {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
         }
-
+        
         .contact-form input, .contact-form textarea {
             background-color: #112240;
-            border: 1px solid #233554;
+            border: 1px solid var(--slate);
             border-radius: 4px;
             padding: 1rem;
-            color: var(--light-sky-blue);
-            font-family: var(--font-stack);
+            color: var(--light-slate);
+            font-family: var(--font-sans);
             font-size: 1rem;
+            transition: border-color 0.3s;
         }
         
         .contact-form input:focus, .contact-form textarea:focus {
@@ -374,59 +380,46 @@
             border-color: var(--accent);
         }
 
-        .map-placeholder {
-            height: 200px;
-            background: linear-gradient(to right, #112240 0%, #233554 100%);
-            border-radius: 8px;
-            margin-top: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-style: italic;
-            color: #8892b0;
-            border: 1px solid #233554;
-        }
-
-        /* --- Footer --- */
+        /* Footer */
         footer {
+            padding: 50px 0;
             text-align: center;
-            padding: 2rem 0;
-            color: #8892b0;
+            font-size: 0.8rem;
+        }
+        .footer-socials { margin-bottom: 1rem; }
+        .footer-socials a { margin: 0 0.5rem; }
+        .footer-socials svg { width: 24px; height: 24px; fill: var(--slate); transition: all 0.3s; }
+        .footer-socials a:hover svg { fill: var(--accent); transform: translateY(-3px); }
+
+        /* Animation Keyframes & Utility classes */
+        @keyframes fadeInWord {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .social-links a {
-            margin: 0 0.5rem;
-            color: #8892b0;
-            transition: color 0.3s;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .social-links a:hover {
-            color: var(--accent);
-        }
-
-        .social-links svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        /* --- Responsive Design --- */
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
-            .nav-container ol, .nav-container .cta-button {
-                display: none; /* Simplification for this example, a full implementation would use a hamburger menu */
+            .desktop-nav {
+                display: none;
             }
-            #about .about-container {
-                grid-template-columns: 1fr;
+            .mobile-nav-toggle {
+                display: block;
             }
-            .about-image-placeholder {
-                transform: none;
-                height: 250px;
-            }
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            section {
-                padding: 6rem 0;
+            .section-heading::after {
+                width: 100px;
             }
         }
     </style>
@@ -435,195 +428,254 @@
 
     <header id="main-header">
         <div class="nav-container container">
-            <a href="#hero" class="logo">Unique Lab & X-Ray</a>
-            <nav>
+            <div class="logo">
+                <a href="#hero">UCL</a>
+            </div>
+            <nav class="desktop-nav">
                 <ol>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ol>
+                <a href="#contact" class="cta-button">Book Appointment</a>
             </nav>
-            <button class="cta-button" onclick="window.location.href='#contact'">Book Appointment</button>
+            <button class="mobile-nav-toggle" aria-label="Open menu">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </button>
         </div>
     </header>
+    
+    <div class="mobile-nav-panel">
+        <ol>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ol>
+        <a href="#contact" class="cta-button">Book Appointment</a>
+    </div>
 
     <main>
         <section id="hero" class="container">
-            <div class="hero-content">
-                <h1 class="headline">
-                    <span class="headline-word">Precision</span>
-                    <span class="headline-word">Diagnostics,</span>
-                </h1>
-                <h2 class="headline">
-                    <span class="headline-word">Personalized</span>
-                    <span class="headline-word">Care.</span>
-                </h2>
-                <p>Empowering health decisions with state-of-the-art laboratory and imaging services. Welcome to a new standard of diagnostic excellence.</p>
-            </div>
-            <div class="scroll-indicator"></div>
-        </section>
-
-        <section id="trust" class="container">
-            <div class="trust-badges">
-                <div class="badge">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L4.5 5v6c0 5.55 3.84 10.74 7.5 12 3.66-1.26 7.5-6.45 7.5-12V5L12 2zm-1.05 15.5l-3.3-3.3L8.8 13l2.15 2.15 4.95-4.95 1.15 1.15L10.95 17.5z"/></svg>
-                    <h3>NABL Accredited</h3>
-                    <p>Ensuring global standards</p>
-                </div>
-                <div class="badge">
-                     <svg viewBox="0 0 24 24"><path d="M16.5 12c1.38 0 2.5-1.12 2.5-2.5S17.88 7 16.5 7C15.12 7 14 8.12 14 9.5s1.12 2.5 2.5 2.5zM9 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm7.5 3c-1.83 0-5.5.92-5.5 2.75V19h11v-2.25c0-1.83-3.67-2.75-5.5-2.75zM9 13c-2.33 0-7 1.17-7 3.5V19h7v-2.5c0-.85.33-2.34 2.37-3.41C10.5 13.1 9.66 13 9 13z"/></svg>
-                    <h3><span class="counter" data-target="500000">0</span>+</h3>
-                    <p>Happy Patients</p>
-                </div>
-                <div class="badge">
-                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                    <h3>24-Hour Reports</h3>
-                    <p>Fast & Accurate Results</p>
-                </div>
-            </div>
+            <h1 class="headline">
+                <span class="headline-word" style="animation-delay: 0.1s;">Precision</span>
+                <span class="headline-word" style="animation-delay: 0.2s;">Diagnostics,</span>
+                <span class="headline-word" style="color: var(--accent); animation-delay: 0.3s;">Personalized</span>
+                <span class="headline-word" style="color: var(--accent); animation-delay: 0.4s;">Care.</span>
+            </h1>
+            <p class="fade-in" style="transition-delay: 0.5s;">Empowering your health decisions with state-of-the-art laboratory and imaging services. Welcome to a new standard of diagnostic excellence, where accuracy meets compassion.</p>
         </section>
 
         <section id="about" class="container">
-            <div class="about-container">
-                <div class="about-text">
-                    <h2>Where Technology Meets Compassion</h2>
-                    <p>Unique Clinical Laboratory & X-Ray was founded on the principle that accurate diagnostics are the bedrock of effective healthcare. We have invested in the most advanced technology and a team of dedicated experts to provide results you can trust. Our approach is simple: blend cutting-edge science with a genuine commitment to patient well-being, ensuring a seamless and reassuring experience from start to finish.</p>
+            <h2 class="section-heading fade-in">How It Works</h2>
+            <div class="process-grid">
+                <div class="process-step fade-in" style="transition-delay: 100ms;">
+                    <div class="step-number">01</div>
+                    <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+                    <h3>Schedule Your Visit</h3>
+                    <p>Easily book an appointment online or walk in at your convenience. Our team is ready to assist you promptly.</p>
                 </div>
-                <div class="about-image-placeholder"></div>
+                <div class="process-step fade-in" style="transition-delay: 200ms;">
+                    <div class="step-number">02</div>
+                    <svg viewBox="0 0 24 24"><path d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v6.17l-1.42-1.42L6.17 15.17 12 21l5.83-5.83-1.41-1.41L15 15.17V9c2-.17 4.14-.5 6-1l-.5-2z"/></svg>
+                    <h3>Quick & Painless Testing</h3>
+                    <p>Our certified phlebotomists and technicians ensure a comfortable and swift sample collection process.</p>
+                </div>
+                <div class="process-step fade-in" style="transition-delay: 300ms;">
+                    <div class="step-number">03</div>
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <h3>Receive Secure Results</h3>
+                    <p>Access your confidential reports through our secure online portal, typically within 24 hours.</p>
+                </div>
             </div>
         </section>
 
         <section id="services" class="container">
-            <h2 class="section-heading">Our Spectrum of Services</h2>
+            <h2 class="section-heading fade-in">Our Core Services</h2>
             <div class="services-grid">
-                <div class="service-card">
-                    <svg viewBox="0 0 512 512"><path d="M473.7 73.7C444.4 44.4 400.9 24 352 24c-29.9 0-58.2 7.7-83.3 21.3-37.3-29.3-85.3-45.3-136.7-45.3C52.1 0 0 52.1 0 122c0 37.3 12.5 71.5 34.3 98.4-28.5 35.8-46.3 80.6-46.3 130.6C-12 430.9 50.1 493 120 493c49.4 0 92.9-26.1 115.5-64.4 4.9 110.1 92.2 197.4 202.3 202.3C430.9 512 493 449.9 493 380c0-49.4-26.1-92.9-64.4-115.5C460.3 227.2 493 174.5 493 120c0-48.9-20.4-92.4-49.3-121.3z"/></svg>
-                    <h3>Pathology & Histology</h3>
-                    <p>Microscopic examination of tissues to provide definitive diagnoses for a wide range of conditions.</p>
-                    <a href="#">Learn More &rarr;</a>
+                <div class="service-card fade-in">
+                    <div class="icon-container">
+                        <h3>Clinical Pathology</h3>
+                        <svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8" /><path d="M12 15v6" /><path d="M10 4c.905-1.004 2.13-1.54 3.482-1.353 2.14.301 3.692 2.17 3.518 4.316-.174 2.145-2.093 3.733-4.178 3.535-1.99-.187-3.56-1.9-3.822-3.83" /><path d="M8.5 11.5c.102-2.015 1.76-3.55 3.8-3.55 2.04 0 3.7 1.657 3.7 3.7 0 1.902-1.397 3.456-3.23 3.68" /></g></svg>
+                    </div>
+                    <p>Comprehensive analysis of blood, urine, and body fluids to diagnose diseases and monitor health conditions with precision.</p>
                 </div>
-                <div class="service-card">
-                     <svg viewBox="0 0 24 24"><path d="M18.9 5.1c-1.2-1.2-2.9-1.9-4.7-1.9H9.8C6.3 3.2 3.2 6.3 3.2 9.8v4.4c0 1.8.7 3.5 1.9 4.7s2.9 1.9 4.7 1.9h4.4c3.5 0 6.6-3.1 6.6-6.6V9.8c0-1.8-.7-3.5-1.9-4.7zM9.5 17.2c-1.5 0-2.7-1.2-2.7-2.7s1.2-2.7 2.7-2.7 2.7 1.2 2.7 2.7-1.2 2.7-2.7 2.7zm5-5c-1.5 0-2.7-1.2-2.7-2.7s1.2-2.7 2.7-2.7 2.7 1.2 2.7 2.7-1.2 2.7-2.7 2.7z"/></svg>
-                    <h3>Genetic Testing</h3>
-                    <p>Advanced DNA analysis for hereditary risk assessment, pharmacogenomics, and personalized medicine.</p>
-                    <a href="#">Learn More &rarr;</a>
+                <div class="service-card fade-in" style="transition-delay: 100ms;">
+                    <div class="icon-container">
+                        <h3>Digital Radiography (X-Ray)</h3>
+                        <svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.5 21-3-3-3 3" /><path d="M12.5 18 9 14.5" /><path d="M16 14.5 12.5 11" /><path d="M12.5 8 9 4.5" /><path d="M16 4.5 12.5 1" /><path d="m4.5 21 3-3 3 3" /><path d="M7.5 18 11 14.5" /><path d="M4 14.5 7.5 11" /><path d="M7.5 8 11 4.5" /><path d="M4 4.5 7.5 1" /><path d="M12.5 1v20" /></g></svg>
+                    </div>
+                    <p>High-resolution, low-dose digital X-ray imaging for rapid and accurate diagnosis of skeletal and soft tissue issues.</p>
                 </div>
-                <div class="service-card">
-                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 16H6v-5h5v5zm0-6H6V8h5v5zm6 6h-5v-5h5v5zm0-6h-5V8h5v5z"/></svg>
-                    <h3>Digital X-Ray Imaging</h3>
-                    <p>High-resolution digital radiography for clear, immediate, and low-exposure imaging results.</p>
-                    <a href="#">Learn More &rarr;</a>
+                <div class="service-card fade-in" style="transition-delay: 200ms;">
+                    <div class="icon-container">
+                        <h3>Molecular Diagnostics</h3>
+                        <svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0m2 0h12" /><path d="M18 18a1 1 0 1 0 2 0a1 1 0 1 0-2 0m2 0h-2" /><path d="M18 6a1 1 0 1 0 2 0a1 1 0 1 0-2 0m2 0h-2" /><path d="M14 6h-2" /><path d="M8 6H6" /><path d="M14 18h-2" /><path d="M8 18H6" /><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0" /></g></svg>
+                    </div>
+                    <p>Advanced testing of DNA and RNA for infectious diseases, genetic disorders, and personalized medicine insights.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="container">
+            <h2 class="section-heading fade-in">Frequently Asked Questions</h2>
+            <div class="faq-accordion fade-in">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need an appointment for a blood test?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While walk-ins are welcome, we recommend scheduling an appointment to minimize your wait time. Certain specialized tests may require a scheduled slot. You can book easily through our contact form or by calling us directly.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How and when will I receive my results?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most routine test results are available within 24 hours. You will receive an email and an SMS notification with a link to our secure online portal where you can view and download your reports. Your referring doctor will also receive a copy automatically.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is fasting required for my test?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Fasting is required for certain tests, such as a lipid profile or a fasting blood sugar test. This typically means no food or drink (except water) for 8-12 hours prior to your test. Please confirm with your doctor or our staff if your specific test requires fasting.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="container">
-             <h2 class="section-heading">Get In Touch</h2>
-             <div class="contact-container">
-                 <div class="contact-info">
-                     <p>Have questions or need to schedule an appointment? Reach out to us. Our team is ready to assist you with all your diagnostic needs.</p>
-                     <div class="info-item">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <span>Main Rd, near Hotel Shubham, Mehkar, Maharashtra 443301</span>
-                     </div>
-                     <div class="info-item">
-                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                        <a href="tel:+919421396744">+91 94213 96744</a>
-                     </div>
-                     <div class="map-placeholder">
-                        Stylized Map Placeholder
-                     </div>
-                 </div>
-                 <form class="contact-form" id="contactForm">
-                     <input type="text" name="name" placeholder="Your Name" required>
-                     <input type="email" name="email" placeholder="Your Email" required>
-                     <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                     <button type="submit" class="cta-button">Send Message</button>
-                     <div id="form-status" style="margin-top: 1rem;"></div>
-                 </form>
-             </div>
+            <div class="contact-form">
+                <h2 class="fade-in">Get In Touch</h2>
+                <p class="fade-in">Have a question or need to book a specialized test? Fill out the form below and our team will get back to you shortly.</p>
+                <form id="contact-form" class="fade-in">
+                    <!-- IMPORTANT: Replace with your own access key from web3forms.com -->
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+                <div id="form-status" style="margin-top: 1rem;"></div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <div class="social-links">
+        <div class="footer-socials">
             <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-11 6H5v7h3V9zm-1.5-2.25a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM18 16h-2.75v-3.47c0-1.04-.62-1.55-1.25-1.55-.74 0-1.25.5-1.25 1.55V16H10V9h2.75v1.32h.04c.4-.76 1.38-1.32 2.71-1.32 2.91 0 3.5 1.92 3.5 4.4V16z"/></svg></a>
             <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.55v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.94.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
         </div>
-        <p>&copy; 2025 Unique Clinical Laboratory & X-Ray. All Rights Reserved.</p>
+        <p>© 2025 Unique Clinical Laboratory & X-Ray. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // --- Header Scroll Effect ---
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        document.addEventListener('DOMContentLoaded', function() {
 
-        // --- Hero Headline Animation ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const words = document.querySelectorAll('.headline-word');
-            words.forEach((word, index) => {
-                word.style.animationDelay = `${index * 0.15}s`;
+            // --- Header Scroll Behavior ---
+            let lastScrollTop = 0;
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                    header.classList.add('scrolled-down');
+                } else {
+                    header.classList.remove('scrolled-down');
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }, false);
+
+            // --- Mobile Navigation ---
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-panel a');
+            
+            mobileNavToggle.addEventListener('click', () => {
+                document.body.classList.toggle('mobile-nav-open');
             });
-        });
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    document.body.classList.remove('mobile-nav-open');
+                });
+            });
 
-        // --- Intersection Observer for Animations ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    if (entry.target.classList.contains('counter')) {
-                        animateCounter(entry.target);
-                        observer.unobserve(entry.target);
+            // --- Intersection Observer for Animations ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
                     }
-                }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+            // --- FAQ Accordion ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.faq-item.active');
+                    if (currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                    }
+                    item.classList.toggle('active');
+                });
             });
-        }, { threshold: 0.1 });
 
-        // Observe service cards
-        document.querySelectorAll('.service-card').forEach((card, index) => {
-            card.style.transitionDelay = `${index * 100}ms`;
-            observer.observe(card);
-        });
+            // --- Functional Contact Form ---
+            const form = document.getElementById('contact-form');
+            const formStatus = document.getElementById('form-status');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const object = {};
+                formData.forEach((value, key) => {
+                    object[key] = value;
+                });
+                const json = JSON.stringify(object);
+                formStatus.innerHTML = "Sending...";
 
-        // --- Animated Counter ---
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => observer.observe(counter));
-
-        function animateCounter(counter) {
-            const target = +counter.getAttribute('data-target');
-            const duration = 2000; // 2 seconds
-            const stepTime = Math.abs(Math.floor(duration / target));
-            let current = 0;
-            const timer = setInterval(() => {
-                current += Math.ceil(target / (duration / 16));
-                if (current >= target) {
-                    clearInterval(timer);
-                    current = target;
-                }
-                counter.innerText = current.toLocaleString();
-            }, 16);
-        }
-
-        // --- Contact Form Handling ---
-        const form = document.getElementById('contactForm');
-        const formStatus = document.getElementById('form-status');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            formStatus.style.color = 'var(--light-sky-blue)';
-            formStatus.textContent = 'Sending...';
-
-            // Simulate form submission
-            setTimeout(() => {
-                formStatus.style.color = 'var(--accent)';
-                formStatus.textContent = 'Message sent! We will get back to you shortly.';
-                form.reset();
-            }, 1500);
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    if (response.status == 200) {
+                        formStatus.innerHTML = "Form submitted successfully!";
+                        formStatus.style.color = "var(--accent)";
+                    } else {
+                        console.log(response);
+                        formStatus.innerHTML = jsonResponse.message;
+                        formStatus.style.color = "red";
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    formStatus.innerHTML = "Something went wrong!";
+                    formStatus.style.color = "red";
+                })
+                .then(function() {
+                    form.reset();
+                    setTimeout(() => {
+                        formStatus.innerHTML = "";
+                    }, 5000);
+                });
+            });
         });
     </script>
 </body>
